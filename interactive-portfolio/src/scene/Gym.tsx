@@ -75,7 +75,7 @@ function Bench({ position = [0.6, -0.7, -1.6] as [number, number, number] }) {
   );
 }
 
-export function GymScene() {
+export function GymScene({ onBackToBridge }: { onBackToBridge?: () => void }) {
   const setWorld = useWorld((s) => s.setWorld);
   return (
     <>
@@ -121,7 +121,7 @@ export function GymScene() {
       </Html>
 
       {/* Back portal moved back-right */}
-      <Portal label="Back to Bridge" onEnter={() => setWorld("BRIDGE")} position={[3, 1.2, -3]} />
+      <Portal label="Back to Bridge" onEnter={onBackToBridge ?? (() => setWorld("BRIDGE"))} position={[3, 1.2, -3]} />
 
       {/* Lighting */}
       <ambientLight intensity={0.25} />

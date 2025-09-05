@@ -122,7 +122,7 @@ function Backdrop() {
   );
 }
 
-export function DJScene() {
+export function DJScene({ onBackToBridge }: { onBackToBridge?: () => void }) {
   const setWorld = useWorld((s) => s.setWorld);
   return (
     <>
@@ -159,7 +159,7 @@ export function DJScene() {
       </Html>
 
       {/* Back portal moved further back-right */}
-      <Portal label="Back to Bridge" onEnter={() => setWorld("BRIDGE")} position={[3, 1.2, -3]} />
+      <Portal label="Back to Bridge" onEnter={onBackToBridge ?? (() => setWorld("BRIDGE"))} position={[3, 1.2, -3]} />
 
       {/* Subtle base lights + IBL; add gentle front fill so booth is visible */}
       <ambientLight intensity={0.3} />

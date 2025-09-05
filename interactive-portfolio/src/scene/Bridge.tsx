@@ -1,12 +1,10 @@
 import { OrbitControls } from "@react-three/drei";
 import { Portal } from "./Portals";
-import { useWorld } from "../state/useWorld";
 import { GoldenGate } from "./GoldenGate";
 import { NightSFEnvironment, CityLights } from "./NightSF";
 import { BayWater } from "./BayWater";
 
-export function BridgeScene() {
-  const setWorld = useWorld((s) => s.setWorld);
+export function BridgeScene({ onEnterDJ, onEnterGYM }: { onEnterDJ?: () => void; onEnterGYM?: () => void }) {
   return (
     <>
       {/* Background + fog for coastal night atmosphere */}
@@ -30,8 +28,8 @@ export function BridgeScene() {
         <meshStandardMaterial color="#c7c7c7" />
       </mesh>
 
-      <Portal label="Enter DJ World" onEnter={() => setWorld("DJ")} position={[-1.4, 1.2, -3]} />
-      <Portal label="Enter Gym World" onEnter={() => setWorld("GYM")} position={[1.4, 1.2, -3]} />
+      <Portal label="Enter DJ World" onEnter={onEnterDJ} position={[-1.4, 1.2, -3]} />
+      <Portal label="Enter Gym World" onEnter={onEnterGYM} position={[1.4, 1.2, -3]} />
 
       <ambientLight intensity={0.35} />
       <directionalLight position={[5, 8, 2]} intensity={1.15} color="#ffcf99" castShadow />
