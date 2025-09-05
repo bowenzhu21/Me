@@ -1,0 +1,24 @@
+/* Full-viewport app layout */
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #1e1e1e;   /* or whatever you like */
+  overflow: hidden;       /* no scrollbars for the 3D scene */
+}
+
+/* Ensure #root isn’t constrained by Vite’s defaults */
+#root {
+  position: fixed;
+  inset: 0;               /* top:0 right:0 bottom:0 left:0 */
+}
+
+/* Optional: utility class if you want to target the canvas container */
+.canvas-fullscreen {
+  position: absolute;
+  inset: 0;
+}
